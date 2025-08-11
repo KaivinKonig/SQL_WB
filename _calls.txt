@@ -1,7 +1,8 @@
-#Grundlagen
+# Grundlagen / Basics
+
 source 01_basics\rdbms.sql
 
 
-#Tabellen
+# Tabellen
 
 source 02_tables\01_tables.sql

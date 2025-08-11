@@ -1,11 +1,11 @@
 \! cls
 
--- DB anzeigen
+-- DBs anzeigen
 SHOW DATABASES;
 
--- DB anlegen
-CREATE DATABASE boo;
+-- DB anlegen, falls noch nicht existent
+CREATE DATABASE IF NOT EXISTS boo;
 
--- DB anzeigen
+-- DBs anzeigen
 SHOW DATABASES;
 
