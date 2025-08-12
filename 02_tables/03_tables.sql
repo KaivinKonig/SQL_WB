@@ -1,6 +1,6 @@
 \! cls
 
--- UNIQUE
+-- UNIQUE / NOT NULL / DEFAULT
 
 
 -- DB wechseln
