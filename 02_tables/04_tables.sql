@@ -1,6 +1,6 @@
 \! cls
 
--- UNIQUE
+-- PW / Verschlüsselung
 
 
 -- DB wechseln
