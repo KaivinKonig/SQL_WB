@@ -1,28 +1,39 @@
 \! cls
 
--- SELECT
+
+--  01 SELECT
+
+-- SHOW VARIABLES LIKE 'character_set%';
+SHOW VARIABLES LIKE 'collation%';
 
 -- Vorbereitung
-DROP TABLE IF EXISTS boo.contacts;
+
+CREATE DATABASE languages
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS languages.contacts;
 
 -- 1. Tabelle erstellen mit AUTO_INCREMENT und PRIMARY KEY
-CREATE TABLE IF NOT EXISTS boo.contacts (
+CREATE TABLE IF NOT EXISTS languages.contacts (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     address VARCHAR(255),
     phone VARCHAR(20),
     email VARCHAR(100),
     age INT,
-    state VARCHAR(50),?
+    state VARCHAR(50),
     city VARCHAR(100)
 );
 
-DESCRIBE boo.contacts;
+-- SHOW CREATE Table boo.contacts;
+
+DESCRIBE languages.contacts;
 
 -- 2. 50 Datensätze einfügen (id wird automatisch vergeben)
-INSERT INTO boo.contacts (name, address, phone, email, age, state, city) VALUES
+INSERT INTO languages.contacts (name, address, phone, email, age, state, city) VALUES
 ('Sophia Müller', 'Musterstraße 1', '030/123456', 'sophia.mueller@example.de', 25, 'Berlin', 'Berlin'),
-('Ahmet Yılmaz', 'Hauptstraße 2', '0221/987654', 'ahmet.yilmaz@example.de', 32, 'Nordrhein-Westfalen', 'Köln'),
+('Ahmet Yilmaz', 'Hauptstraße 2', '0221/987654', 'ahmet.yilmaz@example.de', 32, 'Nordrhein-Westfalen', 'Köln'),
 ('Leonie Schmidt', 'Bahnhofstraße 3', '089/111222', 'leonie.schmidt@example.de', 28, 'Bayern', 'München'),
 ('Omar Al-Farouqi', 'Marktplatz 4', '040/222333', 'omar.alfarouqi@example.de', 35, 'Hamburg', 'Hamburg'),
 ('Mehmet Kaya', 'Sonnenweg 5', '0711/333444', 'mehmet.kaya@example.de', 30, 'Baden-Württemberg', 'Stuttgart'),
@@ -31,7 +42,6 @@ INSERT INTO boo.contacts (name, address, phone, email, age, state, city) VALUES
 ('Aylin Demir', 'Ringstraße 8', '0911/999000', 'aylin.demir@example.de', 24, 'Bayern', 'Nürnberg'),
 ('Yusuf Öztürk', 'Brückenweg 9', '0231/123123', 'yusuf.ozturk@example.de', 26, 'Nordrhein-Westfalen', 'Dortmund'),
 ('Hanna Fischer', 'Wiesenweg 10', '0228/456456', 'hanna.fischer@example.de', 31, 'Nordrhein-Westfalen', 'Bonn'),
-
 ('Lukas Schneider', 'Rathausstraße 11', '030/789789', 'lukas.schneider@example.de', 33, 'Berlin', 'Berlin'),
 ('Zeynep Aksoy', 'Parkstraße 12', '089/321321', 'zeynep.aksoy@example.de', 22, 'Bayern', 'München'),
 ('Faris Al-Mansoori', 'Schlossweg 13', '040/654654', 'faris.almansoori@example.de', 36, 'Hamburg', 'Hamburg'),
@@ -42,7 +52,6 @@ INSERT INTO boo.contacts (name, address, phone, email, age, state, city) VALUES
 ('Selim Polat', 'Talstraße 18', '040/369258', 'selim.polat@example.de', 29, 'Hamburg', 'Hamburg'),
 ('Hussein Rahman', 'Goethestraße 19', '089/456789', 'hussein.rahman@example.de', 30, 'Bayern', 'München'),
 ('Clara Weber', 'Mozartstraße 20', '0711/963741', 'clara.weber@example.de', 25, 'Baden-Württemberg', 'Stuttgart'),
-
 ('Mustafa Arslan', 'Beethovenstraße 21', '030/852963', 'mustafa.arslan@example.de', 34, 'Berlin', 'Berlin'),
 ('Layla Haddad', 'Schillerstraße 22', '0911/741963', 'layla.haddad@example.de', 28, 'Bayern', 'Nürnberg'),
 ('Felix Lange', 'Lindenweg 23', '0228/852147', 'felix.lange@example.de', 32, 'Nordrhein-Westfalen', 'Bonn'),
@@ -53,7 +62,6 @@ INSERT INTO boo.contacts (name, address, phone, email, age, state, city) VALUES
 ('Mariam Hamdan', 'Schulstraße 28', '0911/357159', 'mariam.hamdan@example.de', 30, 'Bayern', 'Nürnberg'),
 ('Jonas Wolf', 'Seestraße 29', '0231/951753', 'jonas.wolf@example.de', 33, 'Nordrhein-Westfalen', 'Dortmund'),
 ('Rami Khoury', 'Talweg 30', '0611/753159', 'rami.khoury@example.de', 34, 'Hessen', 'Frankfurt'),
-
 ('Nora Schmitt', 'Poststraße 31', '040/888111', 'nora.schmitt@example.de', 26, 'Hamburg', 'Hamburg'),
 ('Cem Özcan', 'Kaiserstraße 32', '030/999888', 'cem.ozcan@example.de', 28, 'Berlin', 'Berlin'),
 ('Yara Haddad', 'Allee 33', '0711/666555', 'yara.haddad@example.de', 27, 'Baden-Württemberg', 'Stuttgart'),
@@ -64,7 +72,6 @@ INSERT INTO boo.contacts (name, address, phone, email, age, state, city) VALUES
 ('Omar Khalil', 'Parkweg 38', '0228/111000', 'omar.khalil@example.de', 35, 'Nordrhein-Westfalen', 'Bonn'),
 ('Lea König', 'Birkenweg 39', '0611/000999', 'lea.koenig@example.de', 24, 'Hessen', 'Frankfurt'),
 ('Ibrahim Hassan', 'Akazienweg 40', '030/777888', 'ibrahim.hassan@example.de', 33, 'Berlin', 'Berlin'),
-
 ('Aisha Mahmoud', 'Panoramastraße 41', '040/999777', 'aisha.mahmoud@example.de', 27, 'Hamburg', 'Hamburg'),
 ('Paul Stein', 'Dorfstraße 42', '089/666777', 'paul.stein@example.de', 31, 'Bayern', 'München'),
 ('Zuhal Demirtaş', 'Bergweg 43', '0711/888999', 'zuhal.demirtas@example.de', 29, 'Baden-Württemberg', 'Stuttgart'),
@@ -76,4 +83,4 @@ INSERT INTO boo.contacts (name, address, phone, email, age, state, city) VALUES
 ('Tarek Bouzid', 'Rathausplatz 49', '0711/222333', 'tarek.bouzid@example.de', 30, 'Baden-Württemberg', 'Stuttgart'),
 ('Melis Erdem', 'Hauptplatz 50', '040/333444', 'melis.erdem@example.de', 25, 'Hamburg', 'Hamburg');
 
- SELECT * FROM boo.contacts;
+SELECT * FROM languages.contacts;

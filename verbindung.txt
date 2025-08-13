@@ -1,0 +1,1 @@
+C:\Users\ALIE142\Desktop\WB_db\SQL_WB>"C:\Users\ALIE142\.dbclient\dependency\mysql\mysql.exe" --default-character-set=utf8mb4 -h 172.105.86.250 -P 3306 -u remote_user -p"xAcb12#@rem0te"  mydb
